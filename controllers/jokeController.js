@@ -1,5 +1,5 @@
 const sequelize = require('../models/joke').sequelize;
-const { Joke } = require('../models/joke');
+const Joke = require('../models/joke');
 
 // Fonction pour ajouter une blague
 const addJoke = async (req, res) => {

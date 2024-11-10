@@ -1,44 +1,10 @@
 // Description: Fichier principal de l'application Express.
 const express = require('express');
 const dotenv = require('dotenv');
-//const { sequelize } = require('./models/joke');
-const path = require('path');
 const sequelize = require('./config/database');
 const seedDatabase = require('./seed');
-const {Joke} = require('./models/joke');
-
-
-
-// synchroniser les modèles avec la base de données
-sequelize.sync()
-  .then(async () => {
-    console.log('Database connected and synchronized');
-    const jokeCount = await Joke.count();
-    if (jokeCount === 0) {
-      await seedDatabase();
-    }
-  })
-  .catch((error) => {
-    console.error('Erreur lors de la synchronisation des modèles:', error);
-  });
-
-// Synchronisation avec la base de données (marque cette fonction comme async)
-/*async function syncDatabase() {
-  try {
-    await sequelize.sync();
-    console.log('Database connected and synchronized');
-
-    // Vérifie si la base est vide et lance le seed si nécessaire
-    const jokeCount = await Joke.count();
-    if (jokeCount === 0) {
-      await seedDatabase();
-    }
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}*/
-// Appel de la fonction pour synchroniser la base de données
-//syncDatabase();
+const Joke = require('./models/joke');
+const path = require('path');
 
 // Charger les variables d'environnement depuis .env
 dotenv.config();
@@ -62,6 +28,32 @@ const jokeRoutes = require('./routes/jokeRoutes');
 
 // Utiliser les routes importées
 app.use('/api/v1', jokeRoutes);
+
+
+// Fonction asynchrone pour synchroniser la base de données et lancer le seed si nécessaire
+async function syncDatabase() {
+  try {
+    // Synchroniser la base de données
+    await sequelize.sync();
+    console.log('Database connected and synchronized');
+
+    // Vérifier le nombre de blagues dans la base de données
+    const jokeCount = await Joke.count();
+    console.log(`Nombre de blagues dans la base : ${jokeCount}`);
+
+    // Si la table est vide, exécuter le seed
+    if (jokeCount === 0) {
+      console.log('Base de données vide, insertion des blagues de seed...');
+      await seedDatabase();  // Insérer les blagues de seed
+    }
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+// Appel de la fonction pour synchroniser la base de données
+syncDatabase();
+
 
 // Définir le port
 const PORT = process.env.PORT || 3000;
