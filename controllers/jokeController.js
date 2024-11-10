@@ -1,5 +1,5 @@
-const sequelize = require('../models/joke').sequelize;// Assurez-vous que le chemin est correct
-const { Joke } = require('../models/joke');  // Vérifie que tu importes correctement le modèle Joke
+const sequelize = require('../models/joke').sequelize;
+const { Joke } = require('../models/joke');
 
 // Fonction pour ajouter une blague
 const addJoke = async (req, res) => {
@@ -41,6 +41,8 @@ const getJokeById = async (req, res) => {
   }
 };
 
+
+/* Fonction pour obtenir une blague aléatoire
 const getRandomJoke = async (req, res) => {
   console.log("Route /blagues/random appelée");
   try {
@@ -53,7 +55,7 @@ const getRandomJoke = async (req, res) => {
       return res.status(404).json({ error: 'Aucune blague disponible' });
     }
 
-    // Choisit un index aléatoire
+    Choisit un index aléatoire
     const randomIndex = Math.floor(Math.random() * count);
     console.log(`Index aléatoire : ${randomIndex}`);
 
@@ -71,14 +73,14 @@ const getRandomJoke = async (req, res) => {
     console.error('Erreur lors de la récupération de la blague aléatoire:', error);
     res.status(500).json({ error: 'Erreur lors de la récupération de la blague aléatoire' });
   }
-};
+};*/
 
 
-/* Fonction pour obtenir une blague aléatoire
+// Fonction pour obtenir une blague aléatoire
 const getRandomJoke = async (req, res) => {
   try {
     const joke = await Joke.findOne({
-    order: sequelize.literal('RANDOM()'),  // Cette ligne récupère une blague aléatoire
+    order: sequelize.literal('RANDOM()'),
     });
     if (joke) {
       res.status(200).json(joke);
@@ -90,6 +92,6 @@ const getRandomJoke = async (req, res) => {
     console.error('Erreur lors de la récupération de la blague aléatoire:', error);
     res.status(500).json({ error: 'Erreur lors de la récupération de la blague aléatoire' });
   }
-};*/
+};
 
 module.exports = { addJoke, getAllJokes, getJokeById, getRandomJoke };

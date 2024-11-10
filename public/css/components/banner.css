@@ -1,0 +1,18 @@
+.banner {
+  position: relative; /* Conteneur parent pour que l'enfant puisse être positionné */
+  background-image: url("https:/www.carambarco.com/wp-content/uploads/2021/03/carambar-1600x784.jpg");
+  background-size: cover;
+  background-position: center; /* Pour centrer l'image */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  /*margin: 0 0 0 0;*/
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  height: 376px;
+}
+
+.container-banner {
+  position: relative; /* Permet au bouton d'être positionné à l'intérieur de ce conteneur */
+  height: 100%; /* Occupe toute la hauteur de la bannière */
+}

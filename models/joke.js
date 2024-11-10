@@ -1,20 +1,19 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-// Si tu n'as pas encore de fichier index.js, tu dois initialiser Sequelize ici
+// Créer une instance de Sequelize
 const sequelize = new Sequelize({
-  dialect: 'sqlite',  // ou 'mysql', 'postgres' selon ta base de données
-  storage: './database.sqlite'  // Chemin de ton fichier SQLite
+  dialect: 'sqlite',
+  storage: './database.sqlite'
 });
 
-// Définir ton modèle
+// Définir le modèle Joke
 const Joke = sequelize.define('Joke', {
   text: {
     type: DataTypes.STRING,
-    allowNull: false,  // Le texte de la blague ne peut pas être nul
+    allowNull: false,
   },
 }, {
-  // Options
-  timestamps: false,  // Désactiver les timestamps si tu ne les utilises pas
+  timestamps: false,
 });
 
 // Synchroniser le modèle avec la base de données

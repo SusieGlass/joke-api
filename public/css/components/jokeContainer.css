@@ -1,0 +1,46 @@
+
+.joke-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px;
+  /*margin-top: 10px;*/
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.joke-container .joke-button:hover {
+  transform: scale(1.1); /* Agrandit légèrement le bouton au survol */
+}
+
+.joke-container #jokeText {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.joke-container .joke-button {
+  background-color: #73661e;
+  color: yellow;
+  border-radius: 100px;
+  padding: 15px 40px;
+  width: 70%;
+  max-width: 300px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  box-shadow: rgba(255, 215, 0, .2) 0 -25px 18px -14px inset,
+              rgba(255, 215, 0, .15) 0 1px 2px,
+              rgba(255, 215, 0, .15) 0 2px 4px,
+              rgba(255, 215, 0, .15) 0 4px 8px,
+              rgba(255, 215, 0, .15) 0 8px 16px,
+              rgba(255, 215, 0, .15) 0 16px 32px;
+  transition: transform 0.2s ease;
+}
+
+.joke-container .joke-button:hover {
+  transform: scale(1.1); /* Agrandit légèrement le bouton au survol */
+}
