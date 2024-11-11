@@ -7,23 +7,27 @@ const Joke = require('./models/joke');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger/swagger.json');
+const cors = require('cors'); // Importer cors
 
+// Initialisation de l'application Express
+const app = express();
 
+// Initialisation de cors
+app.use(cors());
 
 
 // Charger les variables d'environnement depuis .env
 dotenv.config();
 
-// Initialisation de l'application Express
-const app = express();
+
 
 // Configuration de Swagger UI avec ton fichier JSON
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(3002, () => {
+/*app.listen(3000, () => {
   console.log('Serveur démarré sur http://localhost:3001');
   console.log('Documentation Swagger disponible sur http://localhost:3001/api-docs');
-});
+});*/
 
 // Middleware pour parser les requêtes JSON
 app.use(express.json());
@@ -69,10 +73,11 @@ syncDatabase();
 
 
 // Définir le port
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 
 console.log('Serveur démarré');
 // Démarrer le serveur
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);
 });
