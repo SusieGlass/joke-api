@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Joke API",
+    "version": "1.0.0",
+    "description": "API pour récupérer des blagues"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3002/api/v1"
+    }
+  ],
+  "paths": {
+    "/blagues": {
+      "get": {
+        "summary": "Récupérer toutes les blagues",
+        "operationId": "getAllJokes",
+        "tags": ["jokes"],
+        "responses": {
+          "200": {
+            "description": "Une liste de blagues",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Joke"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blagues/{id}": {
+      "get": {
+        "summary": "Récupérer une blague par son ID",
+        "operationId": "getJokeById",
+        "tags": ["jokes"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID de la blague",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Une blague",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Joke"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Blague non trouvée"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Joke": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
