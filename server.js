@@ -1,4 +1,4 @@
-// Description: Fichier principal de l'application Express.
+/* Description: Fichier principal de l'application Express.
 const express = require('express');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database');
@@ -15,19 +15,11 @@ const app = express();
 // Initialisation de cors
 app.use(cors());
 
-
 // Charger les variables d'environnement depuis .env
 dotenv.config();
 
-
-
 // Configuration de Swagger UI avec ton fichier JSON
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-/*app.listen(3000, () => {
-  console.log('Serveur démarré sur http://localhost:3001');
-  console.log('Documentation Swagger disponible sur http://localhost:3001/api-docs');
-});*/
 
 // Middleware pour parser les requêtes JSON
 app.use(express.json());
@@ -69,15 +61,18 @@ async function syncDatabase() {
 }
 
 // Appel de la fonction pour synchroniser la base de données
-syncDatabase();
+syncDatabase();*/
 
+const app = require('./app'); // Importation de l'application
 
 // Définir le port
 const PORT = process.env.PORT || 3000;
 
 console.log('Serveur démarré');
 // Démarrer le serveur
+if (require.main === module) {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);
 });
+}
