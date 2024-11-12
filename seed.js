@@ -1,6 +1,6 @@
 //const { text } = require('express');
 const sequelize = require('./config/database');
-const {Joke} = require('./models/joke');
+const Joke = require('./models/joke');
 
 
     // Blagues à insérer
@@ -22,7 +22,7 @@ const {Joke} = require('./models/joke');
 async function seedDatabase() {
   try {
     // Insérer les blagues dans la table Joke
-    await Joke.bulkCreate(jokes.map(text => ({ text })));
+    await Joke.bulkCreate(jokes.map(joke => ({ text: joke.text })));
     console.log('Database seeded!');
   } catch (error) {
     console.error('Erreur lors de l\'insertion des blagues:', error);
