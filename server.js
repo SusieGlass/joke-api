@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const app = require('./app'); // Importation de l'application
 
 // Définir le port
