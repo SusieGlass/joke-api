@@ -13,6 +13,6 @@
 }
 
 .container-banner {
-  position: relative; /* Permet au bouton d'être positionné à l'intérieur de ce conteneur */
+  position: relative;
   height: 100%; /* Occupe toute la hauteur de la bannière */
 }

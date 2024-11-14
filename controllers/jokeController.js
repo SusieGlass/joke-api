@@ -27,7 +27,7 @@ const getAllJokes = async (req, res) => {
   }
 };
 
-// Fonction pour obtenir une blague spécifique par son id
+// Fonction pour obtenir une blague par son id
 const getJokeById = async (req, res) => {
   try {
     const joke = await Joke.findByPk(req.params.id);
@@ -40,41 +40,6 @@ const getJokeById = async (req, res) => {
     res.status(500).json({ error: 'Erreur lors de la récupération de la blague' });
   }
 };
-
-
-/* Fonction pour obtenir une blague aléatoire
-const getRandomJoke = async (req, res) => {
-  console.log("Route /blagues/random appelée");
-  try {
-    // Compte le nombre de blagues
-    const count = await Joke.count();
-    console.log(`Nombre de blagues : ${count}`);
-
-    if (count === 0) {
-      console.log('Aucune blague trouvée');
-      return res.status(404).json({ error: 'Aucune blague disponible' });
-    }
-
-    Choisit un index aléatoire
-    const randomIndex = Math.floor(Math.random() * count);
-    console.log(`Index aléatoire : ${randomIndex}`);
-
-    // Récupère une blague avec un offset aléatoire
-    const joke = await Joke.findOne({offset: randomIndex});
-    console.log(`Blague récupérée : ${joke ? joke.text : 'Aucune'}`);
-
-    if (joke) {
-      console.log(`Blague trouvée : ${joke.text}`);
-      res.status(200).json(joke);
-    } else {
-      res.status(404).json({ error: 'Blague non trouvée' });
-    }
-  } catch (error) {
-    console.error('Erreur lors de la récupération de la blague aléatoire:', error);
-    res.status(500).json({ error: 'Erreur lors de la récupération de la blague aléatoire' });
-  }
-};*/
-
 
 // Fonction pour obtenir une blague aléatoire
 const getRandomJoke = async (req, res) => {

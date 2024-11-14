@@ -3,7 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 // Connexion à SQLite
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: './database.sqlite'  // Chemin vers ta base de données SQLite
+  storage: './database.sqlite'
 });
 
 // Définition du modèle Joke
@@ -14,7 +14,7 @@ const Joke = sequelize.define('Joke', {
   },
   },{
 
-  timestamps: false,  // Pas besoin de timestamps si non utilisés
+  timestamps: false,
 });
 
 // Tester la connexion et ajouter une blague
@@ -25,7 +25,7 @@ async function testSequelize() {
     console.log('Connexion à la base de données réussie.');
 
     // Synchroniser le modèle avec la base de données
-    await sequelize.sync({ alter: true });  // 'force: true' pour recréer les tables
+    await sequelize.sync({ alter: true }); 
     console.log('Modèle synchronisé avec la base de données.');
 
     // Ajouter une blague

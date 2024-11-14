@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-// initialiser Sequelize avec une instance de SQLite
+// initialiser Sequelize
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: './database.sqlite',

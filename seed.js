@@ -1,4 +1,3 @@
-//const { text } = require('express');
 const sequelize = require('./config/database');
 const Joke = require('./models/joke');
 
