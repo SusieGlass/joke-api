@@ -6,7 +6,9 @@ const Joke = require('./models/joke');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger/swagger.json');
+
 const cors = require('cors');
+app.use(cors({ origin: '*' }));
 
 // Initialisation de l'application Express
 const app = express();
@@ -31,6 +33,13 @@ app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
+
+// Middleware pour suivre les requêtes depuis Swagger
+app.use((req, res, next) => {
+  console.log(`[Swagger Test] ${req.method} ${req.url}`);
+  next();
+});
+
 
 // Route pour servir la landing page à la racine
 app.get('/', (req, res) => {
