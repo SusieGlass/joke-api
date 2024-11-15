@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/blagues": {
+    "/api/v1/blagues": {
       "get": {
         "summary": "Récupérer toutes les blagues",
         "responses": {
@@ -56,7 +56,7 @@
         }
       }
     },
-    "/blagues/{id}": {
+    "/api/v1/blagues/{id}": {
       "get": {
         "summary": "Récupérer une blague par son ID",
         "parameters": [
@@ -87,7 +87,7 @@
         }
       }
     },
-    "/random": {
+    "/api/v1/random": {
       "get": {
         "summary": "Récupérer une blague aléatoire",
         "responses": {
