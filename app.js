@@ -6,7 +6,7 @@ const Joke = require('./models/joke');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger/swagger.json');
-const cors = require('cors'); // Importer cors
+const cors = require('cors');
 
 // Initialisation de l'application Express
 const app = express();
@@ -26,9 +26,31 @@ app.use(express.json());
 // Middleware pour servir les fichiers statiques
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware pour logger chaque requête entrante
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
 // Route pour servir la landing page à la racine
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Route spécifique pour `/random`
+app.get('/random', async (req, res) => {
+  console.log('Handling /random request');
+  try {
+    const joke = await Joke.findOne({ order: sequelize.random() });
+    if (joke) {
+      res.json(joke);
+    } else {
+      res.status(404).json({ message: 'No jokes found' });
+    }
+  } catch (error) {
+    console.error('Error handling /random:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Import des routes
