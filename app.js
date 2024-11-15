@@ -6,18 +6,16 @@ const Joke = require('./models/joke');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger/swagger.json');
-
 const cors = require('cors');
-app.use(cors({ origin: '*' }));
 
 // Initialisation de l'application Express
 const app = express();
 
-// Initialisation de cors
-app.use(cors());
-
 // Charger les variables d'environnement depuis .env
 dotenv.config();
+
+// Configuration de CORS après l'initialisation de l'application
+app.use(cors({ origin: '*' }));
 
 // Configuration de Swagger UI avec ton fichier JSON
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -39,7 +37,6 @@ app.use((req, res, next) => {
   console.log(`[Swagger Test] ${req.method} ${req.url}`);
   next();
 });
-
 
 // Route pour servir la landing page à la racine
 app.get('/', (req, res) => {
