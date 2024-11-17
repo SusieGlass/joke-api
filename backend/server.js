@@ -14,7 +14,7 @@ app.listen(PORT, () => {
   if (process.env.NODE_ENV === 'development') {
     console.log(`Swagger documentation available at http://localhost:${PORT}/api-docs`);
   } else {
-    console.log(`Swagger documentation available at https://https://joke-api-backend.onrender.com/api-docs`);
+    console.log(`Swagger documentation available at https://joke-api-backend.onrender.com/api-docs`);
   }
 
 });
