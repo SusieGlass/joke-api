@@ -9,8 +9,12 @@ if (!PORT) {
 }
 
 // Démarrer le serveur
-/*if (require.main === module) {*/
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  /*console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);*/
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`Swagger documentation available at http://localhost:${PORT}/api-docs`);
+  } else {
+    console.log(`Swagger documentation available at https://https://joke-api-backend.onrender.com/api-docs`);
+  }
+
 });

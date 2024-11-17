@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://joke-api-zo48.onrender.com"
+      "url": "https://joke-api-backend.onrender.com"
     }
   ],
   "paths": {
