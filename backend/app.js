@@ -23,9 +23,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Middleware pour parser les requêtes JSON
 app.use(express.json());
 
-// Middleware pour servir les fichiers statiques
-app.use(express.static(path.join(__dirname, '../frontend')));
-
 // Middleware pour logger chaque requête entrante
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
@@ -36,11 +33,6 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   console.log(`[Swagger Test] ${req.method} ${req.url}`);
   next();
-});
-
-// Route pour servir la landing page à la racine
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 // Route spécifique pour `/random`
