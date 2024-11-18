@@ -3,7 +3,12 @@
   "info": {
     "title": "Joke API",
     "version": "1.0.0",
-    "description": "API pour récupérer des blagues"
+    "description": "API permettant de gérer des blagues, incluant des endpoints pour ajouter, consulter et obtenir des blagues aléatoires.",
+    "contact": {
+      "name": "Sonia Chavepeyre",
+      "url": "https://github.com/SusieGlass/joke-api",
+      "email": "ciarasonia013@gmail.com"
+    }
   },
   "servers": [
     {
