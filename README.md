@@ -50,28 +50,3 @@ README GitHub avec :
 Liens vers l'API, la documentation Swagger et la landing page.
 Instructions pour exécuter le projet en local.
 
-## Instructions pour exécuter en local
-1. Clonez ce dépôt :
-```bash
-git clone https://github.com/SusieGlass/joke-api.git
-
-2. Accédez au répertoire du projet :
-```bash
-cd joke-api
-
-3. Naviguez dans le dossier backend :
-```bash
-cd backend
-
-4. Installez les dépendances :
-```bash
-npm install
-
-5. Créez un fichier .env à la racine avec le contenu suivant :
-PORT=3000
-
-6. Lancez le serveur :
-```bash
-node server js
-
-7. Accédez à la documentation Swagger localement sur : http://localhost:3000/api-docs
