@@ -21,6 +21,7 @@ La consultation : toutes les blagues, une blague spécifique (via son ID), ou un
 - Déploiement via Render
 
 ## Cahier des charges
+
 Bienvenue chez Carambar & Co
 Vous êtes en charge de mettre en ligne une mini application web de blagues en utilisant vos connaissances et compétences.
 
@@ -35,6 +36,7 @@ Ajouter une blague en base de données : /blagues (POST).
 Consulter toutes les blagues : /blagues (GET).
 Consulter une blague par ID : /blagues/:id (GET).
 Consulter une blague aléatoire : /blagues/random (GET).
+
 Technologies utilisées :
 
 Node.js, Express, Sequelize (ORM), SQLite (base de données).
@@ -45,8 +47,4 @@ Back-end sur Render.com.
 Front-end sur GitHub Pages.
 Documentation Swagger pour l’API.
 
-README GitHub avec :
-
-Liens vers l'API, la documentation Swagger et la landing page.
-Instructions pour exécuter le projet en local.
-
+README GitHub avec les liens vers le repo API et Swagger
